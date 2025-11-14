@@ -1,9 +1,10 @@
 import spacy
+from datasets import load_dataset
 from tools import parser
 
 # Load spaCy and dataset
 nlp = spacy.load("en_core_web_sm")
-dataset = parser.load_dataset("glue", "mrpc")
+dataset = load_dataset("glue", "mrpc")
 
 def process_sentence_pair(sentence1, sentence2):
     """Parse both sentences and extract their dependency structures"""
@@ -27,7 +28,7 @@ def process_sentence_pair(sentence1, sentence2):
 
 # Process a few examples from the dataset
 print("Processing MRPC examples...")
-for i in range(3):  # Just do first 3 examples
+for i in range(5):  # Just do first 5 examples
     example = dataset['train'][i]
     result = process_sentence_pair(example['sentence1'], example['sentence2'])
     
@@ -37,5 +38,5 @@ for i in range(3):  # Just do first 3 examples
     print(f"Label: {example['label']} (1=paraphrase, 0=not paraphrase)")
     
     print(f"\nDependencies for Sentence 1:")
-    for dep in result['dependencies1'][:5]:  # Show first 5 dependencies
+    for dep in result['dependencies1'][:55]:  # Show first 55 dependencies (Likely All)
         print(f"  {dep['word']} --{dep['dep_type']}--> {dep['head']}")
