@@ -1,0 +1,18 @@
+#Basic config, MUST CHANGE
+#CHANGE
+similarity_thresholds:
+  jaccard: 99
+  semantic: 99
+  syntactic: 99
+
+semantic_methods:
+  use_weighted_average: true
+  use_sif: true
+  pos_weights:
+    NOUN: 99
+    VERB: 99
+    OTHER: 99
+
+model:
+  fusion_classifier: "logistic_regression"
+  test_size: 0.2
