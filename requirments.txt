@@ -1,0 +1,8 @@
+datasets
+huggingface-hub
+pandas
+numpy
+scikit-learn
+spacy
+matplotlib
+seaborn
