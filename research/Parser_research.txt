@@ -1,0 +1,75 @@
+--- Parsers ---
+    -- SpaCy --
+        |- Philosophy -
+            Fast, easy to use, Industrial Strength
+        |- Models -
+            Pre-trained, "en_core_web_trf", "en_core_web_sm/md/lg"
+        |- Outputs - 
+            Provides universal dependancies (UD) labels by default
+        |- Use -
+            Very easy to use, a few lines of code to parse sentence and its dependencies
+        |- Integration -
+            Works very well with python data science stack, networkx integrates easily
+        |- Performance -
+            Larger models very accurate, smaller are very fast
+
+    -- Stanford Stanza --
+        |- Philosophy -
+            Pure python + modern version of Stanford Core NLP
+            Research oriented, highly accurate
+        |- Models - 
+            Pre-trained models on different treebanks can handle complex gramatical sctructures.
+        |- Output -
+            Universal dependencies
+        |- Use -
+            Good API, is clean and fits well with python
+        |- Integration - 
+            Pure python integrated well with oher python libraries
+        |- Performance -
+            Accuracy is among the best available, Speed is slower than spacy non-transformer models
+    
+    -- Allen NLP --
+        |- Philosophy -
+            Research first, built on python
+            Designed for "state of the art" deep learning models in NLP "Go to choice if you plan to modify or train your own models"
+        |- Models -
+            Biffane dependancy parser is most widely used (highly accurate)
+        |- Output -
+            Universal Dependancies
+        |- Use -
+            More difficult than SpaCy or Stanza, requires better understanding of the libraries abstactions
+        |- Integration -
+            Excellent in the python ecosystem, for pre-trained model is overkill
+        |- Performance -
+            State-of-the-art accuracy, inference speed can be slower due to model complexity
+    
+    -- Spark NLP ---
+        |- Philosophy -
+            Built on Apache Spark or scalable, distributed NLP processing
+            For massive datasets in a distributed computing
+        |- Models -
+            Provided its own anotated models
+            often transformer architecture
+        |- Output -
+            Universal Dependancies
+        |- Use -
+            Good if familiar with spark ML API
+            Setup more involved than pure python libraries
+        |- Integration -
+            Ideal for big data pipelines
+            Unnesisarily heavy for single corpus analysis
+        |- Performance -
+            Very high accuracy
+            Designed for speed and scale on clusters
+    
+    -- Overall --
+        |- SpaCy or Stanze --
+            SpaCy is much simpler to set up and use, - robust, highly accurate system to be set up quickly and relativly simply
+            Stanza is more complex and requires more complex setup, - maximise baseline accuracy when parsing in exchange for speed and simlicity
+
+    -- Choice --
+        |- SpaCy -
+            Use SpaCy initially, if parsing errors appear will switch to Stanza to check issues
+
+
+            

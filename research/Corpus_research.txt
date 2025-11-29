@@ -1,0 +1,109 @@
+--- Datasets/Corpus ---
+    -- Microsoft Research Paraphrase Corpus --
+        |- Primary Usage -
+            Paraphrase Identification
+        |- Content -
+            ~6,000 sentence pairs from online news sources, labled (1,0)
+            Relatively small and limited to news articles
+        |- Best For -
+            Initial development, benchmarking
+
+    -- PAN Plagiarism Detection Corpus --
+        |- Primary Usage -
+            Plagiarism Detection Research
+        |- Content -
+            Different years of competitions with various text types
+            PAN-PC-10/11 External plagiarism detection
+            PAN-SS-13 Single source plagiarism with complexity levels
+            Academic texts, web content, student essays
+        |- Best For -
+            Advanced evluation on realistic plagiarism
+
+    -- Quora Question Pairs --
+        |- Primary Usage -
+            Duplicate Questions - (Paraphrased, likely unintentional)
+        |- Content -
+            +400,000 question pairs from Quora
+            Labled duplicate and not duplicate
+            Focuses on questions, not general statements
+        |- Best For -
+            Training data-intensive models
+
+    -- SemEval Paraphrase Datasets --
+        |- Primary Usage -
+           Paraphrase and semantic similarity
+        |- Content -
+            Datasets from SemEval competitions
+            SemEval-2012 Task 6: Semantic textual similarity
+            SemEval-2015 Task 1: Paraphrase & Semantic similarity
+            SemEval-2017 Task 1: Semantic similarity
+            News, headlines, image captions
+            Well annotated, multiple languages
+            Fragmented across "Tasks"
+        |- Best For -
+            Multi domain evaluation (different criteria)
+
+    -- P4P (Paraphrase for Plagiarism) Corpus --
+        |- Primary Usage -
+            Plagiarism detection with paraphrasing
+        |- Content -
+            Academic texts with paraphrased plagiarism
+            Source-plagiarism mappings, paraphrase types
+            Academic writing
+            Limited availability + academic focus
+            Access limited to requests
+        |- Best For -
+            Paraphrase-specific plagiarism research
+
+    -- ParaBank 2.0 --
+        |- Primary Usage -
+            Paraphrase generation and evaluation
+        |- Content -
+            Large-scale paraphrase pairs generated from parallel text
+            Multiple paraphrase candidates per sentence
+            Machine generated, may contain noise
+        |- Best For -
+            Large scale training and data augmentation
+
+    -- Twitter Paraphrase Corpus --
+        |- Primary Usage -
+            Short text paraphrase detection
+        |- Content -
+            tweet pairs annotated for paraphrase relationship
+            Paraphrase scoresand binary lables
+            ~20,000 pairs
+            Informal language, real-world usage
+            Short text, informal grammer (difficult to parse)
+        |- Best For -
+            Informal language and social media applications
+    
+    -- UW-Stanford Paraphrase Corpus --
+        |- Primary Usage -
+            Paraphrase detection
+        |- Content -
+            Sentence pairs from news & web text
+            Paraphrase judgments
+            ~3,000 pairs (Very small dataset)
+            High quality human judgments (good test set)
+        |- Best For -
+            High-precision evaluation, testing
+
+    -- Sheffield Plagiarism Corpus --
+        |- Primary Usage -
+            Academic plagiarism detection research
+        |- Content -
+            Original academic texts and publications
+            Modified documents with various types of plagiarism
+            Detailed Markups of plagiarised sections with source mappings
+            Plagiarism types
+            Verbatim copying, Parphrasing, Structural plagiarism
+            Academic writing and student essays
+            Realistic plagiarism + obfuscation types
+        |- Best For -
+            Evaluating real academic plagiarism detection
+
+    -- New PAN25 --
+        |- 3 parts
+            spot_check
+            train
+            validation

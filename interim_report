@@ -1,0 +1,41 @@
+1. Project Objectives
+
+Primary Aim The main goal of this project is to build a software system that can identify highly similar sentences, with a focus on catching plagiarism and paraphrased text. Most current detection tools are good at flagging direct text matches, but they often fail when words are swapped out even if the core message stays the same. To fix this, I am building a detector that looks at two things: syntactic structure (grammar) and semantic context (meaning).
+
+Technical Approach The system uses a dual-branch architecture. The structural branch uses a dependency parser—likely SpaCy or Stanford CoreNLP—to pull out lexical dependencies. These dependencies get converted into a graph representation, which effectively turns the sentence into a tree structure for comparison. Similarity is then assessed by calculating the largest mapping between these parse trees.
+
+The semantic branch addresses the limitations of structural analysis. Since syntax can vary significantly while meaning remains constant, this branch compares the semantic content of the sentences. This ensures the system captures "conceptual plagiarism" that purely syntactic or lexical methods might miss.
+
+Deliverables The primary artifact will be a software tool that accepts sentence pairs and outputs a similarity score derived from a weighted fusion of graph matching and semantic analysis. The system will be benchmarked against the Microsoft Research Paraphrase Corpus (MSRP) to quantify its accuracy in real-world scenarios. A secondary deliverable is the evaluation of different graph comparison algorithms to determine the most effective method for NLP-based structural matching.
+
+2. Description of work completed
+
+The development environment is established in Python. The data pipeline is operational, with the Microsoft Research Paraphrase Corpus (MSRP) selected as the ground truth dataset, ingested, and pre-processed for analysis. A technical review of dependency parsers was conducted to select the optimal tool for the syntactic branch. Initial coding phases are complete, including notebooks for data exploration, baseline semantic experiments, and the skeleton structure for the fusion model.
+
+2.1 Evidence of work completed
+
+Data Engineering The MSRP dataset was successfully ingested and cleaned. Exploratory Data Analysis (EDA) showed a significant class imbalance in the dataset. Roughly 67% of the sentence pairs are labeled as paraphrases, leaving only 33% as non-paraphrases. This is important for evaluation because a basic classifier could simply guess "paraphrase" every time and still achieve 67% accuracy. Because of this, I will rely on F1-score and Precision/Recall rather than raw accuracy to judge performance. 
+
+Pre-processing functions were written to clean the text, including tokenization and handling of special characters. I also checked the dataset complexity. The creators of the corpus removed any pairs with a Levenshtein distance lower than 8, which means there are no "trivial" paraphrases where only one or two words differ.
+
+Architecture Design A modular architecture was designed to process the data:
+
+    Syntactic Branch: Research was conducted on parsers to evaluate their ability to generate robust dependency graphs. The focus was on finding a parser that balances speed with the detail required for tree comparison.
+
+    Semantic Branch: Baseline strategies were implemented using vector-based approaches.
+
+    Fusion Model: The code structure for the final classifier has been initiated.
+
+2.2 Literature review
+
+Corpora The Microsoft Research Paraphrase Corpus (MSRP) was identified as the primary benchmark. It is the industry standard for sentence-level similarity tasks, consisting of 5,801 sentence pairs extracted from news sources. Crucially, the "non-paraphrase" examples in this dataset still exhibit high lexical overlap, making them "hard negatives" that confuse simple string-matching algorithms. This characteristic makes MSRP the ideal stress test for my proposed structure-plus-meaning approach.
+
+Parsers A comparative review of NLP libraries (SpaCy, Stanford CoreNLP, AllenNLP) highlighted a critical trade-off between processing speed and the richness of the linguistic annotations. This review informed the selection of tools capable of supporting the "largest common subtree" analysis. The decision process prioritized libraries that allow easy extraction of dependency heads and children, which is a prerequisite for the planned graph construction.
+
+3. Future Work
+
+Semantic Analysis Implementation One major issue is polysemy, where words have different meanings depending on the context. Simple word vectors struggle with this. To solve it, I plan to upgrade the semantic module to use contextual embeddings from a pre-trained Transformer model like BERT or RoBERTa. Unlike static embeddings, these models create dynamic representations of words based on their surroundings, which should provide much better precision. I also plan to experiment with SIF (Smooth Inverse Frequency) sentence embeddings as a computationally lighter alternative to compare against the Transformer results.
+
+Syntactic Analysis Implementation The syntactic module relies on a graph comparison algorithm. My main plan is to use Tree Edit Distance (TED). This calculates the minimum number of edits needed to turn one parse tree into another. I also plan to look into the Largest Common Substructure algorithm as an alternative. This part of the project involves high algorithmic complexity, so the calculations will need to be optimized to run efficiently on the full corpus.
+
+Model Training and Evaluation The final step is training a supervised machine learning model, such as Logistic Regression or an SVM. This model will take the outputs from the semantic and syntactic modules and use them as features to generate a final probability score (0-100%). Evaluation will cover standard metrics like Precision, Recall, and F1-score to ensure the system catches plagiarism without triggering too many false positives.

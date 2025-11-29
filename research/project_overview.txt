@@ -1,0 +1,10 @@
+--- Project Overview ---
+    3 Layer detection
+        |- 1. Surface-Level similarity (Direct copying)
+        |- 2. Text Analysis
+            \_ (a) Semantic Similarity  (Keywords/contextual meaning)
+            \_ (b) Syntactic Similarity (gramatical structure)
+        |- 3. Parapharse Detection
+
+    -- 0. Foundation --
+        
