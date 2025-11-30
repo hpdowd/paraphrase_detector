@@ -1,9 +1,12 @@
-datasets
-huggingface-hub
 pandas
 numpy
 scikit-learn
-spacy
 matplotlib
-seaborn
+
+spacy
+tensor
+datasets
 jupyter
+
+huggingface-hub
+seaborn
