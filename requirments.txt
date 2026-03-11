@@ -5,6 +5,8 @@ matplotlib
 sentence-transformers
 rapidfuzz
 
+statsmodels
+
 spacy
 tensor
 datasets
